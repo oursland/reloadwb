@@ -1,0 +1,29 @@
+[project]
+name = "ReloadWB"
+description = ""
+readme = "README.md"
+license = "LGPL-2.1-or-later"
+license-files = ["LICENSE"]
+keywords = ["FreeCAD"]
+version = "0.0.1"
+requires-python = ">= 3.10"
+authors = [{ name = "Jackson Oursland", email = "jacob.oursland@gmail.com" }]
+maintainers = [{ name = "Jackson Oursland", email = "jacob.oursland@gmail.com" }]
+
+[tool.setuptools]
+packages = []
+
+[project.urls]
+Repository = "https://github.com/oursland/ReloadWB"
+Issues = "https://github.com/oursland/ReloadWB/issues"
+
+[project.optional-dependencies]
+dev = ["pre-commit==4.2.*", "mypy==1.16.*"]
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+explicit_package_bases = true
+ignore_missing_imports = true

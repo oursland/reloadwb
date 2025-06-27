@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+
+    <name>ReloadWB</name>
+    <description>An addon to explore reloading WB</description>
+    <icon>freecad/reloadwb/resources/icons/reloadwb-icon.svg</icon>
+    <version>0.2.0</version>
+    <date>2025-06-08</date>
+
+    <author email="jacob.oursland@gmail.com">Jackson Oursland</author>
+    <maintainer email="jacob.oursland@gmail.com">Jackson Oursland</maintainer>
+    <license file="LICENSE">LGPL-2.1-or-later</license>
+
+    <url branch="main" type="repository">https://github.com/oursland/ReloadWB</url>
+    <url type="bugtracker">https://github.com/oursland/ReloadWB/issues</url>
+    <url type="readme">https://github.com/oursland/ReloadWB/blob/main/README.md</url>
+
+    <content>
+        <workbench>
+            <name>ReloadWB</name>
+            <freecadmin>1.0.0</freecadmin>
+            <python_min>3.10.0</python_min>
+            <subdirectory>freecad/reloadwb</subdirectory>
+            <classname>ReloadWorkbench</classname>
+        </workbench>
+    </content>
+
+</package>
