@@ -1,14 +1,14 @@
 """Initialization of the Reload Workbench"""
 
-import os
-from pathlib import Path
+from importlib import resources
 
 import FreeCAD as App
 import FreeCADGui as Gui
 
 from freecad.reloadwb.commands import get_all_commands
+from freecad import reloadwb
 
-ROOT_DIR = Path(__file__).parents[2].resolve()
+ROOT_DIR = resources.files(reloadwb)
 RESOURCES_DIR = ROOT_DIR / "resources"
 ICONS_DIR = RESOURCES_DIR / "icons"
 WORKBENCH_ICON_FILE = ICONS_DIR / "reloadwb-icon.svg"
@@ -17,7 +17,7 @@ WORKBENCH_ICON_FILE = ICONS_DIR / "reloadwb-icon.svg"
 class ReloadWorkbench(Gui.Workbench):
     MenuText = "ReloadWB"
     Tooltip = "Test Reload Workbench"
-    Icon = os.fspath(WORKBENCH_ICON_FILE)
+    Icon = str(WORKBENCH_ICON_FILE)
 
     def Initialize(self):
         App.Console.PrintWarning("Initializing workbench")
@@ -28,7 +28,7 @@ class ReloadWorkbench(Gui.Workbench):
         self.appendToolbar("ReloadWB", command_names)
         self.appendMenu("ReloadWB", command_names)
         App.Console.PrintWarning(f"Using icons in {ICONS_DIR}")
-        Gui.addIconPath(os.fspath(ICONS_DIR))
+        Gui.addIconPath(str(ICONS_DIR))
 
 try:
     Gui.removeWorkbench("ReloadWorkbench")
