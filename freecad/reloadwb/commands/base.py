@@ -15,9 +15,8 @@ class BaseCommand(ABC):
         super().__init_subclass__(**kwargs)
         commands[cls.__name__] = cls
 
-    @abstractmethod
     def GetResources(self) -> dict[str, str]:
-        pass
+        return {}
 
     @abstractmethod
     def Activated(self) -> None:

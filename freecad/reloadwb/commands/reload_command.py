@@ -1,12 +1,10 @@
 # Developer tool to reload the workbench.
 
-from importlib import import_module, reload
-import sys
-
 import FreeCAD as App
 import FreeCADGui as Gui
 
 from freecad.reloadwb.commands.base import BaseCommand
+from .utils import HotSwapCommand
 
 __all__ = ["ReloadCommand"]
 
@@ -32,33 +30,6 @@ class ReloadCommand(BaseCommand):
 
     def Activated(self) -> None:
         App.Console.PrintWarning("RELOAD!")
-
-        # def _reload_module(module_name: str) -> None:
-        #     try:
-        #         module = import_module(module_name)
-        #     except ImportError:
-        #         return
-        #     reload(module)
-
-        try:
-            Gui.activateWorkbench('PartWorkbench')
-        except:
-            App.Console.PrintWarning("Failed to switch to PartWorkbench")
-
-        try:
-            Gui.activateWorkbench('PartWorkbench')
-        except:
-            print('failed to switch to Part WB')
-
-        try:
-            Gui.removeWorkbench('ReloadWB')
-        except:
-            print('failed to remove ReloadWB')
-
-        for mod in [mod for mod in sys.modules if 'reloadwb' in mod]:
-            print(f'Reloading {mod}')
-            reload(sys.modules[mod])
-
-        Gui.activateWorkbench('ReloadWorkbench')
+        HotSwapCommand.reload_all()
 
 Gui.addCommand('ReloadCommand', ReloadCommand())
